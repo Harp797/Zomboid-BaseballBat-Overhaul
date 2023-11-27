@@ -1,0 +1,91 @@
+/** 0.01 sizing, this is something i need to remember **/
+module Harp797BarbedWireBat {
+    imports {
+        Base
+    }
+    item WiredBaseballBat
+    {
+	    DisplayCategory = WeaponCrafted,
+		SwingAnim = Bat,
+		MaxRange	=	1.28,
+		WeaponSprite	=	WiredBaseballBat,
+		MinAngle	=	0.75,
+		Type	=	Weapon,
+		MinimumSwingTime	=	3,
+		KnockBackOnNoDeath	=	TRUE,
+		SwingAmountBeforeImpact	=	0.02,
+		Categories	=	Blunt,
+		ConditionLowerChanceOneIn	=	10,
+		Weight	=	2,
+		SplatNumber	=	2,
+		PushBackMod	=	0.5,
+		SubCategory	=	Swinging,
+		ConditionMax	=	15,
+		MaxHitCount	=	2,
+		DoorDamage	=	7,
+		IdleAnim	=	Idle_Weapon2,
+		SwingAnim	=	Bat,
+		DisplayName	=	Wired Baseball Bat,
+		MinRange	=	0.61,
+		SwingTime	=	3,
+		HitAngleMod	=	-30,
+		KnockdownMod	=	2,
+		SplatBloodOnNoDeath	=	TRUE,
+		Icon	=	WiredBaseballBat,
+		RunAnim	=	Run_Weapon2,
+        TwoHandWeapon = TRUE,
+        BreakSound  =   SpikedBaseballBatBreak,
+        DoorHitSound = SpikedBaseballBatHit,
+		HitSound = SpikedBaseballBatHit,
+		HitFloorSound = SpikedBaseballBatHit,
+		SwingSound = SpikedBaseballBatSwing,
+        TreeDamage  =   1,
+        MetalValue = 5,
+        CriticalChance	=	60,
+        critDmgMultiplier = 5,
+        MinDamage	=	1,
+        MaxDamage	=	1.5,
+        BaseSpeed = 0.95,
+		WeaponLength = 0.5,
+        DamageCategory = Slash,
+        DamageMakeHole = TRUE,
+        AttachmentType = Shovel,
+		WorldStaticModel = WiredBaseballBat,
+    }
+	
+		
+	fixing WiredBaseballBat
+    {
+       Require : WiredBaseballBat,
+	   
+	   Fixer : BarbedWire=1,
+	   Fixer : Woodglue=1,
+    }
+	
+	recipe Build BarbedWire Baseball Bat
+	{
+	   BaseballBat,
+	   BarbedWire=2,
+	   keep [Recipe.GetItemTypes.Hammer],
+
+	   Result:WiredBaseballBat,
+	   Sound:Hammering,
+	   Time:150.0,
+	   Category:Carpentry,
+	   OnCreate:Recipe.OnCreate.WiredBaseballBat,
+	}
+	
+	model WiredBaseballBat
+		{
+			mesh = WiredBaseballBat,
+			texture = WiredBaseballBat,
+			
+			attachment world
+			{
+				offset = 0.0000 0.2450 0.0000,
+				rotate = 90.0000 90.0000 0.0000,
+			}
+		}
+		
+	
+}
